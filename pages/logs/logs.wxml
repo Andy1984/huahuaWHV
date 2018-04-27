@@ -1,36 +1,32 @@
 <view class="container">
   <view class="page__bd">
     <view class="textField">
-      <input type="text" placeholder="中文姓名"></input>  
+      <input type="text" placeholder="中文姓名" bindinput='bindChineseName'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="Family Name"></input>  
+      <input type="text" placeholder="Family Name" bindinput='bindFamilyName'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="Given Name"></input>  
+      <input type="text" placeholder="Given Name" bindinput='bindGivenName'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="澳洲手机号"></input>  
+      <input type="text" placeholder="澳洲手机号" bindinput='bindAustralianPhone'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="中国手机号"></input>  
+      <input type="text" placeholder="中国手机号" bindinput='bindChinesePhone'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="邮箱"></input>  
+      <input type="text" placeholder="邮箱" bindinput='bindEmail'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="入境时间"></input>  
+      <input type="text" placeholder="入境时间" bindinput='bindEntryTime'></input>  
     </view>
+    <!-- 用户微信名， 隐藏的 -->
     <view class="textField">
-      <input type="text" placeholder="填写信息时间"></input>  
+      <open-data type="userNickName"></open-data>
     </view>
-    <view class="textField">
-      <input type="text" placeholder="微信号"></input>  
-    </view>
-    <view class="textField">
-      <input type="text" placeholder="身份证号码"></input>  
-    </view>
-
+    
+    
     <view class="btn-area">
       <button type='primary' bindtap="gotoShowCode">提交</button>
     </view>
