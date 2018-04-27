@@ -11,5 +11,8 @@ Page({
         return util.formatTime(new Date(log))
       })
     })
+  },
+  gotoShowCode: function() {
+    console.log("goToShowCode")
   }
 })

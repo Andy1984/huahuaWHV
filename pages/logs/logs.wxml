@@ -1,6 +1,38 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view class="container">
+  <view class="page__bd">
+    <view class="textField">
+      <input type="text" placeholder="中文姓名"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="Family Name"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="Given Name"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="澳洲手机号"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="中国手机号"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="邮箱"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="入境时间"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="填写信息时间"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="微信号"></input>  
+    </view>
+    <view class="textField">
+      <input type="text" placeholder="身份证号码"></input>  
+    </view>
+
+    <view class="btn-area">
+      <button type='primary' bindtap="gotoShowCode">提交</button>
+    </view>
+  </view>
 </view>
