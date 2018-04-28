@@ -1,6 +1,6 @@
 //logs.js
 const util = require('../../utils/util.js')
-
+const app = getApp()
 Page({
   data: {
     chineseName:"",
@@ -11,6 +11,7 @@ Page({
     email:"",
     entryTime:"",
     wechat:"",
+    userInfo:"",
   },
   onLoad: function () {
     this.setData({
@@ -21,7 +22,9 @@ Page({
   },
   
   gotoShowCode: function(e) {
-    console.log(this.wechat)
+    console.log("UserInfo")
+    console.log(app.globalData)
+    console.log(this.data.wechat)
     console.log(this.data)
     console.log(util.formatTime(new Date))
   },
@@ -70,4 +73,11 @@ Page({
       familyName: e.detail.value
     })
   },
+  getUserInfo: function (e) {
+    console.log("好像获取到userInfo了")
+    console.log(e.detail.userInfo.nickName)
+    this.setData({
+      wechat: e.detail.userInfo.nickName
+    })
+  }
 })
