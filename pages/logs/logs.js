@@ -11,7 +11,7 @@ Page({
     email:"",
     entryTime:"",
     wechat:"",
-    userInfo:"",
+    userInfo:{},
   },
   onLoad: function () {
     this.setData({
@@ -76,9 +76,12 @@ Page({
 
   commit: function(e) {
     console.log("好像获取到userInfo了")
-    console.log(e.detail.userInfo.nickName)
     this.setData({
-      wechat: e.detail.userInfo.nickName
+      wechat: e.detail.userInfo.nickName,
+      userInfo: e.detail.userInfo
     })
+    console.log(e.detail.userInfo.nickName)
+    console.log(e.detail.userInfo)
+
   }
 })
