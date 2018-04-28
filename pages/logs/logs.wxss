@@ -4,3 +4,7 @@
   border-bottom : 1px solid #dddddd;
   margin: 30rpx;
 }
+
+.longButton {
+  margin: 40rpx;
+}

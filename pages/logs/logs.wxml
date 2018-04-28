@@ -32,7 +32,7 @@
       <button type='primary' bindtap="gotoShowCode">提交</button>
     </view> -->
 
-    <view class="btn-area">
+    <view class="longButton">
       <button open-type='getUserInfo' bindgetuserinfo='commit' type='primary'>提交</button>
     </view>
   </view>
