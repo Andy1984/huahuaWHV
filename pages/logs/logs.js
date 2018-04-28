@@ -73,7 +73,8 @@ Page({
       familyName: e.detail.value
     })
   },
-  getUserInfo: function (e) {
+
+  commit: function(e) {
     console.log("好像获取到userInfo了")
     console.log(e.detail.userInfo.nickName)
     this.setData({

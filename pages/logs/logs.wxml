@@ -25,10 +25,15 @@
     <!-- <view class="textField">
        <open-data type="userNickName"></open-data> 
     </view> -->
-    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo'>点击自动获取微信昵称</button> 
+
+    <!-- <button open-type='getUserInfo' bindgetuserinfo='getUserInfo'>点击自动获取微信昵称</button> 
 
     <view class="btn-area">
-      <button open-type='getUserInfo' type='primary' bindtap="gotoShowCode" bindgetuserinfo='getUserInfo'>提交</button>
+      <button type='primary' bindtap="gotoShowCode">提交</button>
+    </view> -->
+
+    <view class="btn-area">
+      <button open-type='getUserInfo' bindgetuserinfo='commit' type='primary'>提交</button>
     </view>
   </view>
 </view>
