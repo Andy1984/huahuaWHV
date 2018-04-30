@@ -1,13 +1,33 @@
 //app.js
-const AV = require('./utils/av-weapp-min.js')
+const AV = require('./libs/av-weapp-min.js');
 AV.init({
-  appId: 'wx08b4545ee06b6a13',
-  appKey: 'c2b7162bddd1636cab60f9329e2db141',
+  appId: 'HXy3XwayJULSBRPV2MhgBLAE-gzGzoHsz',
+  appKey: 'S9r3Pkv3hsF6xR8eR02hjWqs',
 });
+
+
 App({
   
   onLaunch: function () {
-    
+    //这样你就可以在应用中使用 AV.User.loginWithWeapp() 方法来使用当前用户身份登录了。
+    AV.User.loginWithWeapp().then(user => {
+      this.globalData.user = user.toJSON();
+    }).catch(console.error);
+
+
+    // 假设已经通过 AV.User.loginWithWeapp() 登录
+    // 获得当前登录用户
+    const user = AV.User.current();
+    // 调用小程序 API，得到用户信息
+    wx.getUserInfo({
+      success: ({ userInfo }) => {
+        // 更新当前用户的信息
+        user.set(userInfo).save().then(user => {
+          // 成功，此时可在控制台中看到更新后的用户信息
+          this.globalData.user = user.toJSON();
+        }).catch(console.error);
+      }
+    });
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
