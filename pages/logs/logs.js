@@ -65,8 +65,8 @@ Page({
   },
 
   commit: function(e) {
-    var callback = (function () {
-      var user = AV.Object.createWithoutData('TFNUser', theObjectId);
+    var editUser = (function (objectId) {
+      var user = AV.Object.createWithoutData('TFNUser', objectId);
       user.set('chineseName', this.data.chineseName);
       user.set('familyName', this.data.familyName);
       user.set('givenName', this.data.givenName);
@@ -94,23 +94,17 @@ Page({
     var query = new AV.Query(TFNUser);
     query.equalTo('openid', app.globalData.openid);
     query.first().then(function (aUser) {
-      console.log("objectId = "+aUser.id)
       // data 就是符合条件的第一个 AV.Objec
       if (aUser == undefined) {
         console.log("aUser is undefined ");
         return null;
       } else {
-        
         console.log("aUser.openid =",aUser.attributes.openid);
         return aUser.id;
       }
     }, function (error) {
       console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
-    }).then(function(objectId){
-      theObjectId = objectId;
-      callback();//我也不知道为什么这样写， 直接写就是不create object
-      return objectId;
-    });
+    }).then(editUser);
   },
 
   insertOrUpdateTNFUser: function (objectId) {
