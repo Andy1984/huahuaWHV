@@ -65,6 +65,9 @@ Page({
   },
 
   commit: function(e) {
+    this.setData({
+      userInfo: e.detail.userInfo,
+    })
     // new AV.Query(TFNUser).first().then(function(user) {
     //   // return user.save(null, {
     //   //   query: new AV.query(TFNUser).equalTo(this.data.openid),
@@ -79,16 +82,12 @@ Page({
     // });
     var query = new AV.Query(TFNUser);
     query.equalTo('openid', app.globalData.openid);
-    query.first().then(function (data) {
+    query.first().then(function (aUser) {
       // data 就是符合条件的第一个 AV.Objec
-      console.log(data);
-      if (data == undefined) {
-        // console.log("哈哈undefined");
-        // this.insertOrUpdateTNFUser();
-        console.log("insertOrUpdate ");
-        
+      if (aUser == undefined) {
+        console.log("aUser is undefined ");
       } else {
-        console.log("else");
+        console.log("aUser.openid =",aUser.attributes.openid);
       }
     }, function (error) {
       console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
