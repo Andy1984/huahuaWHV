@@ -1,4 +1,3 @@
-//logs.js
 const util = require('../../utils/util.js')
 const app = getApp()
 const AV = require('../../libs/av-weapp-min.js')
@@ -14,6 +13,7 @@ Page({
     email:"",
     entryTime:"",
     userInfo:{},
+    openid:''
   },
   onLoad: function () {
     this.setData({
@@ -70,7 +70,6 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
     })
-    // 新建一个 Todo 对象
     var user = new TFNUser();
     console.log(this.data.chineseName);
     user.set('chineseName',this.data.chineseName);
@@ -81,6 +80,7 @@ Page({
     user.set('email',this.data.email);
     user.set('userInfo',this.data.userInfo);
     user.set('entryTime',this.data.entryTime);
+    user.set('openid',app.globalData.openid)
     user.save().then(function (todo) {
       // 成功保存之后，执行其他逻辑.
       console.log('New object created with objectId: ' + user.id);
