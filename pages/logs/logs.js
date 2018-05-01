@@ -65,53 +65,51 @@ Page({
   },
 
   commit: function(e) {
+    var callback = (function () {
+      var user = AV.Object.createWithoutData('TFNUser', theObjectId);
+      user.set('chineseName', this.data.chineseName);
+      user.set('familyName', this.data.familyName);
+      user.set('givenName', this.data.givenName);
+      user.set('australianPhone', this.data.australianPhone);
+      user.set('chinesePhone', this.data.chinesePhone);
+      user.set('email', this.data.email);
+      user.set('userInfo', this.data.userInfo);
+      user.set('entryTime', this.data.entryTime);
+      user.set('openid', app.globalData.openid)
+      user.save().then(function (todo) {
+        // 成功保存之后，执行其他逻辑.
+        console.log('New object created with objectId: ' + user.id);
+      }, function (error) {
+        // 异常处理
+        console.error('Failed to create new object, with error message: ' + error.message);
+      });
+    }).bind(this);
+
+
+
     this.setData({
       userInfo: e.detail.userInfo,
     })
-    // new AV.Query(TFNUser).first().then(function(user) {
-    //   // return user.save(null, {
-    //   //   query: new AV.query(TFNUser).equalTo(this.data.openid),
-    //   //   fetchWhenSave: true,
-    //   // })
-    //   console.log(user)
-    //   return 
-    // }).then(function(){
-    //   console.log("成功" + e);
-    // }).catch(function(error){
-    //   console.log("失败" + error);
-    // });
+    var theObjectId = null;
     var query = new AV.Query(TFNUser);
     query.equalTo('openid', app.globalData.openid);
     query.first().then(function (aUser) {
+      console.log("objectId = "+aUser.id)
       // data 就是符合条件的第一个 AV.Objec
       if (aUser == undefined) {
         console.log("aUser is undefined ");
+        return null;
       } else {
+        
         console.log("aUser.openid =",aUser.attributes.openid);
+        return aUser.id;
       }
     }, function (error) {
       console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
-    });
-    this.setData({
-      userInfo: e.detail.userInfo,
-    })
-    var user = new TFNUser();
-    console.log(this.data.chineseName);
-    user.set('chineseName', this.data.chineseName);
-    user.set('familyName', this.data.familyName);
-    user.set('givenName', this.data.givenName);
-    user.set('australianPhone', this.data.australianPhone);
-    user.set('chinesePhone', this.data.chinesePhone);
-    user.set('email', this.data.email);
-    user.set('userInfo', this.data.userInfo);
-    user.set('entryTime', this.data.entryTime);
-    user.set('openid', app.globalData.openid)
-    user.save().then(function (todo) {
-      // 成功保存之后，执行其他逻辑.
-      console.log('New object created with objectId: ' + user.id);
-    }, function (error) {
-      // 异常处理
-      console.error('Failed to create new object, with error message: ' + error.message);
+    }).then(function(objectId){
+      theObjectId = objectId;
+      callback();//我也不知道为什么这样写， 直接写就是不create object
+      return objectId;
     });
   },
 
