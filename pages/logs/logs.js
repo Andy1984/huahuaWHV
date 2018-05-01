@@ -85,8 +85,6 @@ Page({
       });
     }).bind(this);
 
-
-
     this.setData({
       userInfo: e.detail.userInfo,
     })
@@ -106,26 +104,4 @@ Page({
       console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
     }).then(editUser);
   },
-
-  insertOrUpdateTNFUser: function (objectId) {
-    console.log("insertOrUpdate " + objectId)
-    var user = new TFNUser();
-    console.log(this.data.chineseName);
-    user.set('chineseName', this.data.chineseName);
-    user.set('familyName', this.data.familyName);
-    user.set('givenName', this.data.givenName);
-    user.set('australianPhone', this.data.australianPhone);
-    user.set('chinesePhone', this.data.chinesePhone);
-    user.set('email', this.data.email);
-    user.set('userInfo', this.data.userInfo);
-    user.set('entryTime', this.data.entryTime);
-    user.set('openid', app.globalData.openid)
-    user.save().then(function (todo) {
-      // 成功保存之后，执行其他逻辑.
-      console.log('New object created with objectId: ' + user.id);
-    }, function (error) {
-      // 异常处理
-      console.error('Failed to create new object, with error message: ' + error.message);
-    });
-  }
 });
