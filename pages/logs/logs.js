@@ -2,6 +2,8 @@
 const util = require('../../utils/util.js')
 const app = getApp()
 const AV = require('../../libs/av-weapp-min.js')
+class TFNUser extends AV.Object { }
+AV.Object.register(TFNUser);
 Page({
   data: {
     chineseName:"",
@@ -68,10 +70,8 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
     })
-
-    var HuahuaTFNUser = AV.Object.extend('HuahuaTFNUser');
     // 新建一个 Todo 对象
-    var user = new HuahuaTFNUser();
+    var user = new TFNUser();
     console.log(this.data.chineseName);
     user.set('chineseName',this.data.chineseName);
     user.set('familyName',this.data.familyName);
