@@ -1,18 +1,29 @@
 <view class="container">
   <view class="label">
+    <label>当前状态: {{att.status}}</label>
+  </view> 
+  <view class="label">
     <label>中文姓名: {{att.chineseName}}</label>
   </view>
   <view class="label">
     <label>Surname: {{att.familyName}}</label>
-  </view><view class="label">
+  </view>
+  <view class="label">
     <label>Given Name: {{att.givenName}}</label>
-  </view><view class="label">
+  </view>
+  <view class="label">
     <label>澳洲手机号: {{att.australianPhone}}</label>
-  </view><view class="label">
+  </view>
+  <view class="label">
     <label>中国手机号: {{att.chinesePhone}}</label>
-  </view><view class="label">
+  </view>
+  <view class="label">
     <label>邮箱: {{att.email}}</label>
-  </view><view class="label">
+  </view>
+  <view class="label">
     <label>入境时间: {{att.entryTime}}</label>
   </view> 
+  <view class="longButton">
+    <button bindtap='commit' type='primary'>信息有误，重新填写</button>
+  </view>
 </view>

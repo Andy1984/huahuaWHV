@@ -4,12 +4,12 @@ const manager = require('../../model/manager.js');
 const util = require('../../utils/util.js')
 Page({
   data:{
-    // status: "未提交税号信息",
     att:{}
   },
   onLoad: function () {
-    
+    util.showBusy("加载中");
     manager.getObjectId(objectId => {
+      // util.showModel();
       console.log("成功获取objectId " + objectId);
       if (objectId) {
         var query = new AV.Query('TFNUser');
@@ -29,6 +29,11 @@ Page({
         })
       }
     });
-    
+  },
+  commit: function (e) {
+    console.log("home.js的commit方法");
+    wx.navigateTo({
+      url: '../../pages/logs/logs'
+    })
   }
 })
