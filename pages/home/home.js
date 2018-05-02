@@ -25,15 +25,16 @@ Page({
           console.error(error);
         });
       } else {
-        wx.navigateTo({
+        console.log("应该在这里jump");
+        wx.redirectTo({
           url: '../../pages/logs/logs'
         })
       }
     });
   },
   commit: function (e) {
-    console.log("home.js的commit方法");
-    wx.navigateTo({
+    console.log("点击信息有误， 重写填写 home.js的commit方法");
+    wx.redirectTo({
       url: '../../pages/logs/logs'
     })
   },

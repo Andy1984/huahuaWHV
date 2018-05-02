@@ -66,6 +66,7 @@ Page({
   },
 
   commit: function(e) {
+    util.showBusy('提交中')
     this.setData({
       userInfo: e.detail.userInfo,
     })
@@ -81,6 +82,8 @@ Page({
         return aUser.id;
       }
     }, function (error) {
+      wx.hideToast();
+      util.showModel("失败: "+error.message);
       console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
     }).then((objectId) => {
       var user = AV.Object.createWithoutData('TFNUser', objectId);
@@ -99,6 +102,10 @@ Page({
       user.save().then(function (todo) {
         // 成功保存之后，执行其他逻辑.
         console.log('New object created with objectId: ' + user.id);
+        wx.hideToast();
+        wx.redirectTo({
+          url: '../../pages/home/home',
+        })
       }, function (error) {
         // 异常处理
         console.error('Failed to create new object, with error message: ' + error.message);
