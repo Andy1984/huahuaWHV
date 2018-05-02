@@ -7,6 +7,13 @@ const getObjectId = callback => {
   AV.User.loginWithWeapp().then(user => {
     app.globalData.user = user.toJSON();
   }).then(() => {
+    var objectId = wx.getStorageSync('objectId');
+    console.log('本地objectId' + objectId);
+    if (objectId) {
+      console.log("本地已经有了objectId");
+      callback(objectId);
+      return;
+    }
     // 登录
     wx.login({
       success: res => {

@@ -102,6 +102,7 @@ Page({
       user.save().then(function (todo) {
         // 成功保存之后，执行其他逻辑.
         console.log('New object created with objectId: ' + user.id);
+        wx.setStorageSync('objectId', user.id);
         wx.hideToast();
         wx.redirectTo({
           url: '../../pages/home/home',
