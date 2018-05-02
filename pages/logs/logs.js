@@ -13,7 +13,7 @@ Page({
     email:"",
     entryTime:"",
     userInfo:{},
-    status:"未处理"
+    status:"未处理",
   },
   onLoad: function () {
     this.setData({
@@ -94,6 +94,8 @@ Page({
       user.set('entryTime', this.data.entryTime);
       user.set('openid', app.globalData.openid);
       user.set('status', this.data.status);
+      user.set('imageURL', '');
+      user.set('tfn','');
       user.save().then(function (todo) {
         // 成功保存之后，执行其他逻辑.
         console.log('New object created with objectId: ' + user.id);

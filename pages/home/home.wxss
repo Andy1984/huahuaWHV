@@ -7,3 +7,14 @@
 .longButton {
   margin: 40rpx;
 }
+.shortButton {
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-block-end: 0rpx;
+}
+.radio {
+  margin-right: 2000rpx;
+  margin-left: 40rpx;
+}

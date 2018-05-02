@@ -1,29 +1,65 @@
 <view class="container">
   <view class="label">
-    <label>当前状态: {{att.status}}</label>
+    <text>当前状态: {{att.status}}</text>
   </view> 
-  <view class="label">
-    <label>中文姓名: {{att.chineseName}}</label>
+
+  <block wx:if="{{att.tfn.length != 0}}">
+    <view class="label">
+      <text>税号: {{att.tfn}}</text>
+    </view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio">
+        <radio value="获得拍照件" checked="{{att.additionalMethod=='获得拍照件'}}">获得拍照件</radio>
+      </label>
+      <label class="radio">
+        <radio value="获得扫描件" checked="{{att.additionalMethod=='获得扫描件'}}">获得扫描件</radio>
+      </label>
+      <label class="radio">
+        <radio value="上门取件" checked="{{att.additionalMethod=='上门取件'}}">上门取件</radio>
+      </label>
+      <label class="radio">
+        <radio value="寄信上门" checked="{{att.additionalMethod=='寄信上门'}}">寄信上门</radio>
+      </label>
+    </radio-group>
+    <view class="longButton">
+      <button bindtap='selectAdditionalMethod' type='primary'>提交获取税号的额外方式</button>
+    </view>
+  </block>
+  <view wx:if="{{att.imageURL.length != 0}}" class="label">
+    <image src="{{att.imageURL}}" mode="aspectFit"></image>
   </view>
   <view class="label">
-    <label>Surname: {{att.familyName}}</label>
-  </view>
-  <view class="label">
-    <label>Given Name: {{att.givenName}}</label>
-  </view>
-  <view class="label">
-    <label>澳洲手机号: {{att.australianPhone}}</label>
-  </view>
-  <view class="label">
-    <label>中国手机号: {{att.chinesePhone}}</label>
-  </view>
-  <view class="label">
-    <label>邮箱: {{att.email}}</label>
-  </view>
-  <view class="label">
-    <label>入境时间: {{att.entryTime}}</label>
+    <text>花花墨尔本地址: 
+    Address1: 115/8 montrose street
+    Town: Hawthorn East
+    District: VIC
+    Postcode: 3123
+    </text>
   </view> 
-  <view class="longButton">
-    <button bindtap='commit' type='primary'>信息有误，重新填写</button>
-  </view>
+  <block wx:if="{{att.tfn.length == 0}}">
+    <view class="label">
+    <text>中文姓名: {{att.chineseName}}</text>
+    </view>
+    <view class="label">
+      <text>Surname: {{att.familyName}}</text>
+    </view>
+    <view class="label">
+      <text>Given Name: {{att.givenName}}</text>
+    </view>
+    <view class="label">
+      <text>澳洲手机号: {{att.australianPhone}}</text>
+    </view>
+    <view class="label">
+      <text>中国手机号: {{att.chinesePhone}}</text>
+    </view>
+    <view class="label">
+      <text>邮箱: {{att.email}}</text>
+    </view>
+    <view class="label">
+      <text>入境时间: {{att.entryTime}}</text>
+    </view> 
+    <view class="longButton">
+      <button bindtap='commit' type='primary'>信息有误，重新填写</button>
+    </view>
+  </block>
 </view>

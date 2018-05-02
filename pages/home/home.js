@@ -4,12 +4,13 @@ const manager = require('../../model/manager.js');
 const util = require('../../utils/util.js')
 Page({
   data:{
-    att:{}
+    att:{},
+    additionalMethod:""
   },
   onLoad: function () {
     util.showBusy("加载中");
     manager.getObjectId(objectId => {
-      // util.showModel();
+      wx.hideToast();
       console.log("成功获取objectId " + objectId);
       if (objectId) {
         var query = new AV.Query('TFNUser');
@@ -35,5 +36,28 @@ Page({
     wx.navigateTo({
       url: '../../pages/logs/logs'
     })
+  },
+
+  radioChange: function(e) {
+    console.log("radioChange");
+    this.setData({
+      additionalMethod: e
+    })
+  },
+  selectAdditionalMethod: function(e) {
+    console.log(this.data.additionalMethod.detail.value)
+    var objectId = app.globalData.objectId;
+    var user = AV.Object.createWithoutData('TFNUser', objectId);
+    user.set('additionalMethod', this.data.additionalMethod.detail.value)
+    util.showBusy('提交中')
+    user.save().then(function (todo) {
+      util.showSuccess("提交成功");
+      // 成功保存之后，执行其他逻辑.
+      console.log('New object created with objectId: ' + user.id);
+    }, function (error) {
+      // 异常处理
+      util.showModel("提交失败" + error.message);
+      console.error('Failed to create new object, with error message: ' + error.message);
+    });
   }
 })
