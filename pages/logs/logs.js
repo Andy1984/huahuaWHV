@@ -1,8 +1,8 @@
 const util = require('../../utils/util.js')
 const app = getApp()
 const AV = require('../../libs/av-weapp-min.js')
-class TFNUser extends AV.Object { }
-AV.Object.register(TFNUser);
+const manager = require('../../model/manager.js')
+
 Page({
   data: {
     chineseName:"",
@@ -13,6 +13,7 @@ Page({
     email:"",
     entryTime:"",
     userInfo:{},
+    status:"未处理"
   },
   onLoad: function () {
     this.setData({
@@ -68,7 +69,7 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
     })
-    var query = new AV.Query(TFNUser);
+    var query = new AV.Query('TFNUser');
     query.equalTo('openid', app.globalData.openid);
     query.first().then(function (aUser) {
       // data 就是符合条件的第一个 AV.Objec
@@ -91,7 +92,8 @@ Page({
       user.set('email', this.data.email);
       user.set('userInfo', this.data.userInfo);
       user.set('entryTime', this.data.entryTime);
-      user.set('openid', app.globalData.openid)
+      user.set('openid', app.globalData.openid);
+      user.set('status', this.data.status);
       user.save().then(function (todo) {
         // 成功保存之后，执行其他逻辑.
         console.log('New object created with objectId: ' + user.id);

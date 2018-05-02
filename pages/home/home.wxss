@@ -1,0 +1,6 @@
+.label{
+  padding : 20rpx 30rpx;
+  background-color : #fff;
+  border-bottom : 1px solid #dddddd;
+  margin: 30rpx;
+}
