@@ -65,7 +65,23 @@ Page({
   },
 
   commit: function(e) {
-    var editUser = (function (objectId) {
+    this.setData({
+      userInfo: e.detail.userInfo,
+    })
+    var query = new AV.Query(TFNUser);
+    query.equalTo('openid', app.globalData.openid);
+    query.first().then(function (aUser) {
+      // data 就是符合条件的第一个 AV.Objec
+      if (aUser == undefined) {
+        console.log("aUser is undefined ");
+        return null;
+      } else {
+        console.log("aUser.openid =",aUser.attributes.openid);
+        return aUser.id;
+      }
+    }, function (error) {
+      console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
+    }).then((objectId) => {
       var user = AV.Object.createWithoutData('TFNUser', objectId);
       user.set('chineseName', this.data.chineseName);
       user.set('familyName', this.data.familyName);
@@ -83,25 +99,6 @@ Page({
         // 异常处理
         console.error('Failed to create new object, with error message: ' + error.message);
       });
-    }).bind(this);
-
-    this.setData({
-      userInfo: e.detail.userInfo,
-    })
-    var theObjectId = null;
-    var query = new AV.Query(TFNUser);
-    query.equalTo('openid', app.globalData.openid);
-    query.first().then(function (aUser) {
-      // data 就是符合条件的第一个 AV.Objec
-      if (aUser == undefined) {
-        console.log("aUser is undefined ");
-        return null;
-      } else {
-        console.log("aUser.openid =",aUser.attributes.openid);
-        return aUser.id;
-      }
-    }, function (error) {
-      console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
-    }).then(editUser);
+    });
   },
 });

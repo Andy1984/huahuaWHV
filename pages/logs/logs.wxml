@@ -4,7 +4,7 @@
       <input type="text" placeholder="中文姓名" bindinput='bindChineseName'></input>  
     </view>
     <view class="textField">
-      <input type="text" placeholder="Family Name" bindinput='bindFamilyName'></input>  
+      <input type="text" placeholder="Surname" bindinput='bindFamilyName'></input>  
     </view>
     <view class="textField">
       <input type="text" placeholder="Given Name" bindinput='bindGivenName'></input>  
