@@ -6,7 +6,7 @@
     <input type="text" placeholder="Surname" bindinput='bindFamilyName'></input>  
   </view>
   <view class="textField">
-    <input type="text" placeholder="Given Name" bindinput='bindGivenName'></input>  
+    <input type="text" placeholder="First Name" bindinput='bindGivenName'></input>  
   </view>
   <view class="textField">
     <input type="text" placeholder="澳洲手机号" bindinput='bindAustralianPhone'></input>  
