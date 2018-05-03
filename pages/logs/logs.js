@@ -34,7 +34,7 @@ Page({
   },
   bindGivenName: function (e) {
     this.setData({
-      familyName: e.detail.value
+      givenName: e.detail.value
     })
   },
   bindAustralianPhone: function (e) {
