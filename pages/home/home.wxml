@@ -26,7 +26,7 @@
     </view>
   </block>
   <view wx:if="{{att.imageURL.length != 0}}" class="label">
-    <image src="{{att.imageURL}}" mode="aspectFit"></image>
+    <image src="{{att.imageURL}}" mode="aspectFit" bindtap='tapImage'></image>
   </view>
   <view class="label">
     <text>花花墨尔本地址: 

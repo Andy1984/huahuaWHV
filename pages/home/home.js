@@ -60,5 +60,10 @@ Page({
       util.showModel("提交失败" + error.message);
       console.error('Failed to create new object, with error message: ' + error.message);
     });
+  },
+  tapImage: function(e) {
+    wx.previewImage({
+      urls: [this.data.att.imageURL],
+    })
   }
 })
