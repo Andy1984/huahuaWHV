@@ -3,7 +3,7 @@
     <text>当前状态: {{att.status}}</text>
   </view> 
 
-  <block wx:if="{{att.tfn.length != 0}}">
+  <block wx:if="{{att.tfn && att.tfn.length != 0}}">
     <view class="label">
       <text>税号: {{att.tfn}}</text>
     </view>
@@ -25,7 +25,7 @@
       <button bindtap='selectAdditionalMethod' type='primary'>提交获取税号的额外方式</button>
     </view>
   </block>
-  <view wx:if="{{att.imageURL.length != 0}}" class="label">
+  <view wx:if="{{att.imageURL && att.imageURL.length != 0}}" class="label">
     <image src="{{att.imageURL}}" mode="aspectFit" bindtap='tapImage'></image>
   </view>
   <view class="label">
