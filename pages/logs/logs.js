@@ -16,12 +16,6 @@ Page({
     status:"未处理",
   },
   
-  gotoShowCode: function(e) {
-    console.log("UserInfo")
-    console.log(app.globalData)
-    console.log(this.data)
-    console.log(util.formatTime(new Date))
-  },
   bindChineseName: function(e) {
     this.setData({
       chineseName: e.detail.value
