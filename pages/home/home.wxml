@@ -21,6 +21,8 @@
         <radio value="寄信上门" checked="{{att.additionalMethod=='寄信上门'}}">寄信上门</radio>
       </label>
     </radio-group>
+    <input class='textField' type="text" placeholder='家庭地址' hidden="{{additionalMethod!='寄信上门'}}" bindinput='pickupAddress'></input>
+    <input class='textField' type="text" placeholder='预约日期' hidden="{{additionalMethod!='上门取件'}}" bindinput='deliverDate'></input>
     <view class="longButton">
       <button bindtap='selectAdditionalMethod' type='primary'>提交获取税号的额外方式</button>
     </view>

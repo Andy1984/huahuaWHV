@@ -5,7 +5,7 @@ const util = require('../../utils/util.js')
 Page({
   data:{
     att:{},
-    additionalMethod:""
+    additionalMethod:"",
   },
   onLoad: function () {
     util.showBusy("加载中");
@@ -35,6 +35,10 @@ Page({
       }
     });
   },
+
+
+
+
   commit: function (e) {
     console.log("点击信息有误， 重写填写 home.js的commit方法");
     wx.redirectTo({
@@ -44,9 +48,11 @@ Page({
 
   radioChange: function(e) {
     console.log("radioChange");
+    console.log(e.detail.value);
     this.setData({
-      additionalMethod: e
+      additionalMethod: e.detail.value
     })
+
   },
   selectAdditionalMethod: function(e) {
     console.log(this.data.additionalMethod.detail.value)
