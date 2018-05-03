@@ -18,7 +18,7 @@
     <input type="text" placeholder="邮箱" bindinput='bindEmail'></input>  
   </view>
   <view class="textField">
-    <input type="text" placeholder="入境时间" bindinput='bindEntryTime'></input>  
+    <input type="text" placeholder="入境时间 格式20180304" bindinput='bindEntryTime'></input>  
   </view>
 
   <view class="longButton">

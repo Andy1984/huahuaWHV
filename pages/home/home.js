@@ -55,10 +55,10 @@ Page({
 
   },
   selectAdditionalMethod: function(e) {
-    console.log(this.data.additionalMethod.detail.value)
+    console.log(this.data.additionalMethod)
     var objectId = app.globalData.objectId;
     var user = AV.Object.createWithoutData('TFNUser', objectId);
-    user.set('additionalMethod', this.data.additionalMethod.detail.value)
+    user.set('additionalMethod', this.data.additionalMethod.value)
     util.showBusy('提交中')
     user.save().then(function (todo) {
       util.showSuccess("提交成功");
@@ -69,6 +69,11 @@ Page({
       util.showModel("提交失败" + error.message);
       console.error('Failed to create new object, with error message: ' + error.message);
     });
+  },
+  showMoneyQRCode:function(e) {
+    wx.previewImage({
+      urls: ["https://image.ibb.co/eDfsR7/Screen_Shot_2018_05_03_at_12_48_36_PM.png"],
+    })
   },
   tapImage: function(e) {
     wx.previewImage({
