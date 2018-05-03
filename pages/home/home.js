@@ -5,7 +5,6 @@ const util = require('../../utils/util.js')
 Page({
   data:{
     att:{},
-    additionalMethod:"",
   },
   onLoad: function () {
     util.showBusy("加载中");
@@ -43,36 +42,6 @@ Page({
     console.log("点击信息有误， 重写填写 home.js的commit方法");
     wx.redirectTo({
       url: '../../pages/logs/logs'
-    })
-  },
-
-  radioChange: function(e) {
-    console.log("radioChange");
-    console.log(e.detail.value);
-    this.setData({
-      additionalMethod: e.detail.value
-    })
-
-  },
-  selectAdditionalMethod: function(e) {
-    console.log(this.data.additionalMethod)
-    var objectId = app.globalData.objectId;
-    var user = AV.Object.createWithoutData('TFNUser', objectId);
-    user.set('additionalMethod', this.data.additionalMethod)
-    util.showBusy('提交中')
-    user.save().then(function (todo) {
-      util.showSuccess("提交成功");
-      // 成功保存之后，执行其他逻辑.
-      console.log('New object created with objectId: ' + user.id);
-    }, function (error) {
-      // 异常处理
-      util.showModel("提交失败" + error.message);
-      console.error('Failed to create new object, with error message: ' + error.message);
-    });
-  },
-  showMoneyQRCode:function(e) {
-    wx.previewImage({
-      urls: ["https://image.ibb.co/eDfsR7/Screen_Shot_2018_05_03_at_12_48_36_PM.png"],
     })
   },
   tapImage: function(e) {

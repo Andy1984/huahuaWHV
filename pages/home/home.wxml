@@ -7,25 +7,6 @@
     <view class="label">
       <text>税号: {{att.tfn}}</text>
     </view>
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio">
-        <radio value="获得拍照件" checked="{{att.additionalMethod=='获得拍照件'}}">获得拍照件</radio>
-      </label>
-      <label class="radio">
-        <radio value="获得扫描件" checked="{{att.additionalMethod=='获得扫描件'}}">获得扫描件</radio>
-      </label>
-      <label class="radio">
-        <radio value="上门取件" checked="{{att.additionalMethod=='上门取件'}}">上门取件</radio>
-      </label>
-      <label class="radio">
-        <radio value="寄信上门" checked="{{att.additionalMethod=='寄信上门'}}">寄信上门</radio>
-      </label>
-    </radio-group>
-    <input class='textField' type="text" placeholder='家庭地址' hidden="{{additionalMethod!='寄信上门'}}" bindinput='pickupAddress'></input>
-    <input class='textField' type="text" placeholder='预约日期 格式 20180304' hidden="{{additionalMethod!='上门取件'}}" bindinput='deliverDate'></input>
-    <view class="longButton">
-      <button bindtap='selectAdditionalMethod' type='primary'>提交获取税号的额外方式</button>
-    </view>
   </block>
   <view wx:if="{{att.imageURL && att.imageURL.length != 0}}" class="label">
     <image src="{{att.imageURL}}" mode="aspectFit" bindtap='tapImage'></image>
