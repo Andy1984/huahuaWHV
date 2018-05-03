@@ -8,6 +8,7 @@ const getObjectId = callback => {
     app.globalData.user = user.toJSON();
   }).then(() => {
     var objectId = wx.getStorageSync('objectId');
+    app.globalData.objectId = objectId
     console.log('本地objectId' + objectId);
     if (objectId) {
       console.log("本地已经有了objectId");
