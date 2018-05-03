@@ -58,7 +58,7 @@ Page({
     console.log(this.data.additionalMethod)
     var objectId = app.globalData.objectId;
     var user = AV.Object.createWithoutData('TFNUser', objectId);
-    user.set('additionalMethod', this.data.additionalMethod.value)
+    user.set('additionalMethod', this.data.additionalMethod)
     util.showBusy('提交中')
     user.save().then(function (todo) {
       util.showSuccess("提交成功");
