@@ -8,7 +8,9 @@ const getObjectId = callback => {
     app.globalData.user = user.toJSON();
   }).then(() => {
     var objectId = wx.getStorageSync('objectId');
+    var openid = wx.getStorageSync('openid');
     app.globalData.objectId = objectId
+    app.globalData.openid = openid;
     console.log('本地objectId' + objectId);
     if (objectId) {
       console.log("本地已经有了objectId");
@@ -22,6 +24,7 @@ const getObjectId = callback => {
         console.log("发送 res.code 到后台换取 openId, sessionKey, unionId");
         console.log("openid = ", AV.User.current().attributes.authData.lc_weapp.openid)
         app.globalData.openid = AV.User.current().attributes.authData.lc_weapp.openid
+        wx.setStorageSync("openid", app.globalData.openid)
         var query = new AV.Query(TFNUser);
         query.equalTo('openid', app.globalData.openid);
         query.first().then(aUser => {
