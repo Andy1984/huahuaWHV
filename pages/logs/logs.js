@@ -29,7 +29,7 @@ Page({
   },
   bindFamilyName: function(e) {
     this.setData({
-      australianPhone: e.detail.value
+      familyName: e.detail.value
     })
   },
   bindGivenName: function (e) {
