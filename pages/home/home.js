@@ -20,7 +20,10 @@ Page({
             att:att
           })
         }, function (error) {
-          console.log("异常")
+          console.log("大概数据库删除过了，所以有error")
+          wx.redirectTo({
+            url: '../../pages/logs/logs'
+          })
           // 异常处理
           console.error(error);
         });
