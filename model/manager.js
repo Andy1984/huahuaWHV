@@ -1,7 +1,5 @@
 const app = getApp()
 const AV = require('../libs/av-weapp-min.js')
-class TFNUser extends AV.Object {}
-AV.Object.register(TFNUser);
 
 const getObjectId = callback => {
   AV.User.loginWithWeapp().then(user => {
@@ -14,7 +12,7 @@ const getObjectId = callback => {
         console.log("发送 res.code 到后台换取 openId, sessionKey, unionId");
         console.log("openid = ", AV.User.current().attributes.authData.lc_weapp.openid)
         app.globalData.openid = AV.User.current().attributes.authData.lc_weapp.openid
-        var query = new AV.Query(TFNUser);
+        var query = new AV.Query('TFNUser');
         query.equalTo('openid', app.globalData.openid);
         query.first().then(aUser => {
           console.log(aUser)
