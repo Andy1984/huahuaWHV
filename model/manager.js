@@ -24,6 +24,10 @@ const getObjectId = callback => {
             return aUser.id;
           }
         }, function (error) {
+          wx.showModal({
+            title: '通过openid换objectId时出错',
+            content: error,
+          })
           console.log("我不知道这个error什么时候触发， 反正数据库没有的时候是不会触发的 " + error);
         }).then(callback);
       }
