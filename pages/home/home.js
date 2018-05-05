@@ -21,7 +21,7 @@ Page({
         }, function (error) {
           console.log("大概数据库删除过了，所以有error")
           wx.redirectTo({
-            url: '../../pages/logs/logs'
+            url: '../../pages/form/form'
           })
           // 异常处理
           console.error(error);
@@ -29,7 +29,7 @@ Page({
       } else {
         console.log("应该在这里jump");
         wx.redirectTo({
-          url: '../../pages/logs/logs'
+          url: '../../pages/form/form'
         })
       }
     });
@@ -41,7 +41,7 @@ Page({
   commit: function (e) {
     console.log("点击信息有误， 重写填写 home.js的commit方法");
     wx.redirectTo({
-      url: '../../pages/logs/logs'
+      url: '../../pages/form/form'
     })
   },
   tapImage: function(e) {
