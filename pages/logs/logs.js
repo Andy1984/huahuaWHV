@@ -13,7 +13,7 @@ Page({
     email:"",
     entryTime:"",
     userInfo:{},
-    status:"未处理",
+    status:"等待工作室确认",
   },
   
   bindChineseName: function(e) {
